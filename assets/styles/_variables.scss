@@ -1,0 +1,22 @@
+@import './easings';
+
+$spacer: 16px;
+$td: 0.15s;
+
+$main-font-family: Gramatika, sans-serif;
+$accent-font-family: CoFoKak, sans-serif;
+
+$breakpoints: (
+  'xxs': 360px,
+  'xs': 460px,
+  'sm': 576px,
+  'md': 760px,
+  'lg': 1024px,
+  'xl': 1200px,
+  'xxl': 1600px,
+);
+
+//noinspection ALL
+:export {
+  breakpoints: #{$breakpoints};
+}

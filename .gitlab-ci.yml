@@ -1,0 +1,13 @@
+image: node:latest
+
+pages:
+  stage: deploy
+  script:
+    - yarn install
+    - npm run stage
+    - mv stage_dist/618_Site_BG public
+  only:
+    - master
+  artifacts:
+    paths:
+      - public

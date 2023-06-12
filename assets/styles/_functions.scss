@@ -1,0 +1,19 @@
+@function vh($amount) {
+  @return calc(var(--vh) * #{$amount});
+}
+
+@function lerp($a, $b, $t) {
+  @return calc((#{$a} * (1 - #{$t})) + (#{$b} * #{$t}));
+}
+
+@function inverseLerp($a, $b, $v) {
+  @return calc((#{$v} - #{$a}) / (#{$b} - #{$a}));
+}
+
+@function remap($a, $b, $a2, $b2, $v) {
+  @return lerp($a2, $b2, inverseLerp($a, $b, $v));
+}
+
+@function cssfunc($function, $values...) {
+	@return $function + unquote('(') + $values + unquote(')');
+}

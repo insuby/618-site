@@ -1,0 +1,12 @@
+.fade {
+  &-enter-active,
+  &-leave-active {
+    opacity: 1;
+    transition: opacity $td * 6;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}

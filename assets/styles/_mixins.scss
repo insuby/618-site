@@ -1,0 +1,74 @@
+@mixin down($breakpoint, $heightBreakpoint: null) {
+  $media1: if(map-has-key($breakpoints, $breakpoint), (max-width: map-get($breakpoints, $breakpoint)), (max-width: $breakpoint));
+  $media2: if(map-has-key($breakpoints, $heightBreakpoint), (max-height: map-get($breakpoints, $heightBreakpoint)), (max-height: $heightBreakpoint));
+
+  @if($heightBreakpoint) {
+    @media screen and #{$media1}, screen and #{$media2} {
+      @content;
+    }
+  } @else {
+    @media screen and #{$media1} {
+      @content;
+    }
+  }
+}
+
+@mixin down-height($breakpoint) {
+  @if (map-has-key($breakpoints, $breakpoint)) {
+    @media screen and (max-height: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-height: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin up-height($breakpoint) {
+  @if (map-has-key($breakpoints, $breakpoint)) {
+    @media screen and (min-height: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-height: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin up($breakpoint, $heightBreakpoint: null) {
+  $media1: if(map-has-key($breakpoints, $breakpoint), (min-width: map-get($breakpoints, $breakpoint)), (min-width: $breakpoint));
+  $media2: if(map-has-key($breakpoints, $heightBreakpoint), (min-height: map-get($breakpoints, $heightBreakpoint)), (min-height: $heightBreakpoint));
+
+  @if($heightBreakpoint) {
+    @media screen and #{$media1}, screen and #{$media2} {
+      @content;
+    }
+  } @else {
+    @media screen and #{$media1} {
+      @content;
+    }
+  }
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+
+@mixin clamp-lines($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Transition mixins
+
+@mixin t-transition($transition...) {
+  --transition-transition: #{$transition};
+  transition: var(--transition-transition);
+}
+
+@mixin t-transform($transform...) {
+  --transition-transform: #{$transform};
+  transform: var(--transition-transform);
+}
