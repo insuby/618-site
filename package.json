@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": "v16.x"
+    "node": "v18.x",
+    "pnpm": "8.5.1"
   },
   "scripts": {
     "serve": "webpack serve --mode=development --port=3001 --env public_path=/ --env dist=dist",
@@ -89,5 +90,5 @@
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "pnpm@8.5.1"
 }
