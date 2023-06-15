@@ -45,7 +45,7 @@ export default {
         if (this.loadingProgress < 1) {
           window.location.reload()
         }
-      }, 20000)
+      }, 50000)
     },
   },
 }
