@@ -19,7 +19,6 @@ export default class UIWorksContainer extends UIElement {
   currentHexagonBackground = 'first'
   _displayed = true
   opened = false
-
   async init(categories, projects) {
     this.categories = categories
     this.projects = projects
@@ -31,14 +30,21 @@ export default class UIWorksContainer extends UIElement {
     this.currentCategoryId = this.categories[1].id
     this.currentProjectId = this.projectsByCategories[this.currentCategoryId][1].id
 
-    await loadResponsiveVideoTexture(this.projects[0].video, {autoplay: false}).then(videoTexture => {
-      this.projects[0].videoTexture = videoTexture
-    })
+    // await loadResponsiveVideoTexture(this.projects[0].video, {autoplay: false}).then(videoTexture => {
+    //   this.projects[0].videoTexture = videoTexture
+    // })
+    //
+    // // Load video textures
+    // this.projects.map(p => loadResponsiveVideoTexture(p.video, {autoplay: false}).then(videoTexture => {
+    //   p.videoTexture = videoTexture
+    // }))
 
     // Load video textures
-    this.projects.map(p => loadResponsiveVideoTexture(p.video, {autoplay: false}).then(videoTexture => {
-      p.videoTexture = videoTexture
-    }))
+    await Promise.all(
+      this.projects.map(p => loadResponsiveVideoTexture(p.video, { autoplay: false }).then(videoTexture => {
+        p.videoTexture = videoTexture
+      })),
+    )
 
     // Create categories list
     this.categoriesList = new UIList(TEAR_EFFECT_LAYER, NO_TEAR_EFFECT_LAYER, this.categories)
