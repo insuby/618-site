@@ -27,6 +27,8 @@ const store = new Vuex.Store({
         benchmarkGPU(),
       ])
 
+      console.log(categories, projects)
+
       commit('mutateField', ['categories', categories])
       commit('mutateField', ['projects', projects])
       commit('mutateField', ['languages', languages])
