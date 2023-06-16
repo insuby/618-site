@@ -15,7 +15,7 @@ function measureFPS(callback) {
     const elapsedTime = performance.now() - startTime;
     if (elapsedTime >= 2000) { // 2 секунды прошло
       fps = Math.round(frames / (elapsedTime / 1000));
-      if (fps <= 130) {
+      if (fps <= 45) {
         callback()
         return
       }
