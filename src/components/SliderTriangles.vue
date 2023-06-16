@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div :class="$style.wrapper" class="wrapper">
-  <div>
+    <div>
       <span :class="$style.triangle"></span>
       <span :class="$style.triangle"></span>
       <span :class="$style.triangle"></span>
@@ -33,18 +33,12 @@ $ease: cubic-bezier(.2, 1, .3, 1);
   display: inline-flex;
   transition: all 0.5s $ease;
   animation: arrow-anim 2s $ease infinite;
+}
 
-  //&:first-child {
-  //  animation-delay: 400ms;
-  //}
-  //
-  //&:nth-child(2) {
-  //  animation-delay: 200ms;
-  //}
-  //
-  //&:nth-child(3) {
-  //  animation-delay: 200ms;
-  //}
+body.inactive {
+  .wrapper {
+    display: flex;
+  }
 }
 
 .wrapper {

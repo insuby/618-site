@@ -30,7 +30,7 @@ export default {
     await new Promise(resolve => setTimeout(resolve, 400))
     if (!this.isModalVisible) {
       this.isProgressLost()
-      this.loadThree()
+      await this.loadThree()
     }
   },
   methods: {
@@ -56,63 +56,5 @@ export default {
   user-select: none;
   justify-content: space-around;
 }
-
-$ease: cubic-bezier(.2, 1, .3, 1);
-
-.А {
-  display: none;
-  position: absolute;
-  justify-content: space-between;
-  align-items: center;
-  inset: 0;
-  flex-direction: column;
-
-  svg {
-    width: 100px;
-    height: auto;
-    overflow: visible;
-    transform: rotate(90DEG);
-    fill: white;
-
-    polygon, path {
-      transition: all 0.5s $ease;
-    }
-
-    .arrow {
-      animation: arrow-anim 2.5s $ease infinite;
-    }
-
-    .fixed {
-      animation: arrow-fixed-anim 2.5s $ease infinite;
-    }
-  }
-}
-
-@keyframes arrow-anim {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  5% {
-    transform: translateX(-0.1rem);
-  }
-  100% {
-    transform: translateX(1rem);
-    opacity: 0;
-  }
-}
-
-@keyframes arrow-fixed-anim {
-  5% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 </style>
 

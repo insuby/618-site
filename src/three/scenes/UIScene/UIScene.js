@@ -282,18 +282,21 @@ export default class UIScene extends UpdatableScene {
     this.uiRoot.addEventListener('hoverCursor', t => this.dispatchEvent(t))
 
 
-    this.uiWorksContainer = await new UIWorksContainer()
     this.uiMainContainer = new UIMainContainer()
+    this.uiWorksContainer = new UIWorksContainer()
     this.uiAboutContainer = new UIAboutContainer()
 
     this.uiRoot.add(this.uiMainContainer)
     this.uiRoot.add(this.uiWorksContainer)
     this.uiRoot.add(this.uiAboutContainer)
 
-    this.uiMainContainer.init()
+    await Promise.all([
+      this.uiMainContainer.init(),
+      this.uiWorksContainer.init(this.categories, this.projects),
+    ])
+
     this.uiAboutContainer.init()
 
-    await this.uiWorksContainer.init(this.categories, this.projects)
     this.uiWorksContainer.visible = false
     this.uiWorksContainer.displayed = false
 

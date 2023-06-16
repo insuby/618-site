@@ -13,7 +13,7 @@ import UILanguageMenuItem from './languageMenuItem/UILanguageMenuItem'
 import store from '../../../store'
 
 export default class UIMainContainer extends UIElement {
-  init() {
+  async init() {
     this.ignoreInLayout = true
 
     this.assets = loadAssets({
