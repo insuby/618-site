@@ -28,9 +28,13 @@ export default class UIWorksContainer extends UIElement {
       return [id, projects]
     }))
 
-    this.currentCategoryId = this.categories[0].id
-    this.currentProjectId = this.projectsByCategories[this.currentCategoryId][0].id
 
+   this.currentCategoryId = this.categories[0]?.id
+    console.log('this.currentCategoryId', this.currentCategoryId)
+    this.currentProjectId = this.projectsByCategories[this.currentCategoryId][0]?.id
+    console.log('this.currentProjectId', this.currentProjectId)
+    console.log(this)
+    
     this.projects.map(async (p, index) => {
       if (index === 0) {
         await loadResponsiveVideoTexture(p.video, {autoplay: true}).then(videoTexture => {
