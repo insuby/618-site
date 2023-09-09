@@ -28,36 +28,24 @@ export default class UIWorksContainer extends UIElement {
       return [id, projects]
     }))
 
-    this.currentCategoryId = this.categories[1].id
-    this.currentProjectId = this.projectsByCategories[this.currentCategoryId][1].id
+    this.currentCategoryId = this.categories[0].id
+    this.currentProjectId = this.projectsByCategories[this.currentCategoryId][0].id
 
-    // Load video textures
-    await loadResponsiveVideoTexture(this.projects[4].video, {autoplay: false}).then(videoTexture => {
-      this.projects[4].videoTexture = videoTexture
-    })
+    this.projects.map(async (p, index) => {
+      if (index === 0) {
+        await loadResponsiveVideoTexture(p.video, {autoplay: true}).then(videoTexture => {
+          p.videoTexture = videoTexture
+        })
 
-    this.projects.map((p, index) => {
-      if (index !== 4) {
-        loadResponsiveVideoTexture(p.video, {autoplay: false}).then(videoTexture => {
+        return
+      }
+      if (index !== 0) {
+        loadResponsiveVideoTexture(p.video, {autoplay: true}).then(videoTexture => {
           p.videoTexture = videoTexture
         })
       }
+
     })
-
-
-    // this.projects.map(async (p, index) => {
-    //   if (index === 0) {
-    //     await loadResponsiveVideoTexture(p.video, {autoplay: false}).then(videoTexture => {
-    //       p.videoTexture = videoTexture
-    //     })
-    //
-    //     return
-    //   }
-    //
-    //   loadResponsiveVideoTexture(p.video, {autoplay: false}).then(videoTexture => {
-    //     p.videoTexture = videoTexture
-    //   })
-    // })
     // Load video textures
     // await Promise.all(
     //   this.projects.map(p => loadResponsiveVideoTexture(p.video, { autoplay: false }).then(videoTexture => {
